@@ -1,7 +1,9 @@
-async function renderCards(link = 'https://swapi.dev/api/people') {
+async function renderCards(link) {
     const cardList = document.querySelector('#card-list');
 
     cardList.innerHTML = '';
+
+    if(!link) link = 'https://swapi.dev/api/people';
     
     const dataList = await fetch(link, {
         method: 'GET'

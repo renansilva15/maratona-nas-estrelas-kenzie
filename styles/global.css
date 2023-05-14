@@ -18,6 +18,7 @@
     --color-grey-1: #707070;
     --color-grey-2: #ffffff;
     --color-grey-3: #1e1e1e;
+    --transition-1: .5s;
 }
 
 body {

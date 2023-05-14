@@ -38,6 +38,7 @@ nav {
 .nav-bar {
     display: flex;
     align-items: center;
+
     justify-content: space-between;
 }
 
@@ -48,16 +49,41 @@ nav {
     font-weight: 400;
     line-height: 1.875rem;
     border: .3rem solid transparent;
+
+    position: relative;
 }
 
-.nav-bar > li:hover {
-    border-bottom: .3rem solid var(--color-primary);
+/*  */
+.nav-bar > li::after {
+    content: "";
+    width: 0%;
+    height: 0.250rem;
+    background: var(--color-primary);
+  
+    position: absolute;
+    left: 0;
+    bottom: -0.125rem;
+  
+    transition: width var(--transition-1);
+}
+
+.nav-bar > li:hover::after,
+.nav-bar > li.activate-link::after {
+    width: 100%;
+}
+
+.nav-bar > li.activate-link {
+    color: var(--color-primary);
+}
+
+.nav-bar > li:hover,
+.nav-bar > li.active-link {
     cursor: pointer;
 }
 
 /* ====================CARD LIST==================== */
 #card-list {
-    height: 37.5rem;
+    /* height: 37.5rem; */
     width: 60vw;
     margin: 3.75rem auto;
     overflow: auto;
@@ -75,7 +101,7 @@ nav {
 #card-list ::-webkit-scrollbar {
     /* border-radius: 1.25rem; */
     background-color: var(--color-grey-3);
-    border: 0.18rem solid var(--color-grey-2)
+    border: 0.18rem solid var(--color-grey-3)
 }
 
 /* ====================CARD==================== */
@@ -157,6 +183,36 @@ nav {
     font-weight: 400;
     line-height: 1.4rem;
     text-align: left;
+}
+
+/* ====================BUTTONS==================== */
+.buttons {
+    margin: 3.75rem auto;
+
+}
+
+.buttons ul {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+
+}
+
+.buttons ul li {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    line-height: 1.8rem;
+    padding: .6rem;
+    border-radius: .6rem;
+    border: .18rem solid var(--color-grey-3);
+}
+
+.buttons ul li:hover {
+    box-shadow: .18rem .18rem .25rem rgba(0, 0, 0, .75);
+}
+
+.buttons ul li:first-child {
+    margin-right: 8rem;
 }
 
 /* ====================FOOTER==================== */

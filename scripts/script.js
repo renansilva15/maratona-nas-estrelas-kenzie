@@ -1,9 +1,9 @@
-async function renderCards() {
+async function renderCards(link = 'https://swapi.dev/api/people') {
     const cardList = document.querySelector('#card-list');
 
     cardList.innerHTML = '';
-
-    const dataList = await fetch('https://swapi.dev/api/people', {
+    
+    const dataList = await fetch(link, {
         method: 'GET'
     })
     .then(response => response.json());
@@ -62,6 +62,14 @@ async function renderCards() {
     }
 
     flipCard();
+    // calculateCardsHeight(cardList);
+
+    // Blah
+    const previousButton = document.getElementById('previous');
+    const nextButton = document.getElementById('next');
+
+    previousButton.onclick = () => renderCards(dataList.previous);
+    nextButton.onclick = () => renderCards(dataList.next);
 }
 
 function flipCard() {
@@ -77,3 +85,31 @@ function flipCard() {
 }
 
 renderCards();
+
+
+// Blah
+let navItems = document.querySelectorAll('.nav-item');
+
+for (let i of navItems) {
+    i.onclick = function() {
+        this.classList.add('activate-link');
+
+        for (let item of navItems) {
+            if (item !== this) {
+                item.classList.remove('activate-link');
+            }
+        }
+    };
+}
+
+// Blah
+// function calculateCardsHeight(cardList) {
+//     // const cardList = document.querySelector('#card-list');
+//     const cards = cardList.getElementsByClassName('card');
+
+//     const cardHeight = cards.length > 0 ? cards[0].offsetHeight : 0;
+
+//     const cardsHeight = cardHeight * cards.length;
+
+//     cardList.style.height = cardsHeight / 16 + 'rem';
+// }
